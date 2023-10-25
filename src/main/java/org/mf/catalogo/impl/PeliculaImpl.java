@@ -7,7 +7,6 @@ import org.mf.catalogo.utils.ConexionBD;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PeliculaImpl implements Repositorio<Pelicula> {
-
+    String updateQueryTitle = "UPDATE peliculas SET titulo=? WHERE id_pelicula=?";
+    String updateQueryImg = "UPDATE peliculas SET img=? WHERE id_pelicula=?";
+    String updateQueryUrl = "UPDATE peliculas SET url=? WHERE id_pelicula=?";
+    String selecGenero = "SELECT * FROM generos";
     Connection conn;
 
     public PeliculaImpl(Connection conn) {
         this.conn = conn;
+    }
+
+    public PeliculaImpl() {
+    }
+
+    public Connection getConn() {
+        return conn;
     }
 
     @Override
@@ -34,7 +43,7 @@ public class PeliculaImpl implements Repositorio<Pelicula> {
         PreparedStatement ps = conn.prepareStatement(selectQuery);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            genero = new Genero(rs.getInt("id_genero"), rs.getString("nombre"));
+            genero = new Genero(rs.getInt("id_genero"), rs.getString("genero"));
             pelicula = new Pelicula(rs.getString("titulo"));
             pelicula.setIdPelicula(rs.getInt("id_pelicula"));
             //pelicula.setTitulo(rs.getString("titulo"));
@@ -56,6 +65,10 @@ public class PeliculaImpl implements Repositorio<Pelicula> {
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getUrl());
             ps.setBinaryStream(3, fileInputStream, (int) img.length());
+            if(!genExists(pelicula.getNombreGenero())) {
+                Genero genero = new Genero(pelicula.getNombreGenero());
+                new GeneroImpl(conn).insert(genero);
+            }
             ps.setString(4, pelicula.getNombreGenero());
             ps.executeUpdate();
         } catch (IOException e) {
@@ -64,23 +77,39 @@ public class PeliculaImpl implements Repositorio<Pelicula> {
 
     }
 
-    @Override
-    public void update(Integer integer) throws SQLException {
-
+    public boolean genExists(String genero) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(selecGenero);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            if(rs.getString("genero").equalsIgnoreCase(genero)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    @Override
-    public void update(Genero genero) throws SQLException {
 
+    public void update(Integer id, String titulo) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(updateQueryTitle);
+        ps.setInt(1, id);
+        ps.setString(2, titulo);
+        ps.executeUpdate();
     }
-
     @Override
     public void update(Pelicula pelicula) {
 
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(Integer id) throws SQLException {
+        String deleteQuery = "DELETE FROM peliculas WHERE id_pelicula=?";
+        PreparedStatement ps = conn.prepareStatement(deleteQuery);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+    }
+
+    @Override
+    public void setConn(Connection conn) {
 
     }
 }

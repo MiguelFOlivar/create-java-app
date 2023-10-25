@@ -1,6 +1,7 @@
 package org.mf.catalogo.model;
 
 import java.io.File;
+import java.util.List;
 
 public class Pelicula {
     private int idPelicula;
@@ -9,6 +10,9 @@ public class Pelicula {
     private File imagen;
     private Genero genero;
     private String nombreGenero;
+    List<String> generos;
+    public Pelicula() {
+    }
 
     public Pelicula(String titulo) {
         this.titulo = titulo;

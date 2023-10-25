@@ -1,7 +1,6 @@
 package org.mf.catalogo.pruebas;
 
 import org.mf.catalogo.impl.PeliculaImpl;
-import org.mf.catalogo.model.Genero;
 import org.mf.catalogo.model.Pelicula;
 import org.mf.catalogo.repositorio.Repositorio;
 import org.mf.catalogo.utils.ConexionBD;
@@ -20,9 +19,10 @@ public class TestInsert {
                 conn.setAutoCommit(false);
             }
             Repositorio<Pelicula> repoPeliculas = new PeliculaImpl(conn);
-            Pelicula nuevaPelicula = new Pelicula("El lobo de Wall-Street");
-            nuevaPelicula.setUrl("https://www.imdb.com/title/tt0993846/");
-            nuevaPelicula.setImagen(new File("img/wolf.png"));
+            Pelicula nuevaPelicula = new Pelicula("Spider-man 2");
+            //nuevaPelicula.setUrl("https://www.imdb.com/title/tt0993846/");
+            nuevaPelicula.setUrl("https://www.imdb.com/title/tt0145487/?ref_=nv_sr_srsg_1_tt_7_nm_1_q_spiderman");
+            nuevaPelicula.setImagen(new File("img/sp2.jpg"));
             nuevaPelicula.setNombreGenero("Acción");
             repoPeliculas.insert(nuevaPelicula);
 
