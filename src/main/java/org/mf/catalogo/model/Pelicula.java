@@ -106,4 +106,7 @@ public class Pelicula {
     public String toString() {
         return "id: " + this.idPelicula + " " + this.titulo + "|";
     }
+    public String mostrarDetalles(){
+        return this.toString() + " URL: " + this.url + " | Género: " + this.getNombreGenero() + "\n" ;
+    }
 }

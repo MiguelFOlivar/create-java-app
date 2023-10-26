@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Repositorio<T> {
     List<T>select() throws SQLException;
-    void insert(T t) throws SQLException, FileNotFoundException;
+    void insert(T t) throws SQLException;
     void update(Integer integer, String s) throws SQLException;
     default void update(T t) throws SQLException{};
     void delete(Integer integer) throws SQLException;

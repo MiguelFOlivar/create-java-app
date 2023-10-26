@@ -1,5 +1,4 @@
 package org.mf.catalogo.impl;
-import org.mf.catalogo.model.Genero;
 import org.mf.catalogo.model.Pelicula;
 import org.mf.catalogo.repositorio.RepositorioBuscar;
 import java.sql.Connection;
@@ -14,9 +13,16 @@ public class BuscarPeliculaImpl implements RepositorioBuscar<Pelicula> {
     private String selectQuery;
     private Connection conn;
 
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
 
     public BuscarPeliculaImpl(Connection conn) {
         this.conn = conn;
+    }
+
+    public BuscarPeliculaImpl() {
+
     }
 
     @Override
@@ -42,8 +48,8 @@ public class BuscarPeliculaImpl implements RepositorioBuscar<Pelicula> {
     public List<Pelicula> buscarG(String genero) throws SQLException {
         List<Pelicula> peliculas = new ArrayList<>();
         Pelicula pelicula = null;
-        selectQuery = "SELECT * FROM peliculas INNER JOIN generos " +
-                " ON peliculas.genero_id = generos.id_genero WHERE genero=?";
+        selectQuery = "SELECT * FROM peliculas p INNER JOIN generos g " +
+                "ON p.genero_id = g.id_genero WHERE g.genero=?";
         PreparedStatement ps = conn.prepareStatement(selectQuery);
         ps.setString(1, genero);
         ResultSet rs = ps.executeQuery();
