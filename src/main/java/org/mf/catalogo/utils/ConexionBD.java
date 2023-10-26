@@ -15,7 +15,7 @@ public class ConexionBD {
         pool.setUrl(url);
         pool.setUsername(usuario);
         pool.setPassword(password);
-        pool.setMinIdle(5);
+        pool.setMinIdle(3);
         pool.setInitialSize(3);
         pool.setMaxIdle(8);
         return pool;

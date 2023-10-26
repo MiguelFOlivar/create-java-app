@@ -77,7 +77,7 @@ public class RepositorioPeliculaImpl implements Repositorio<Pelicula> {
                 } catch (SQLException e) {
                     conn.rollback();
                     System.err.println("Rollback... |   " + e.getMessage());
-                    e.printStackTrace(System.out);
+                    //e.printStackTrace(System.out);
                 }
             } catch (IOException e) {
                 conn.rollback();

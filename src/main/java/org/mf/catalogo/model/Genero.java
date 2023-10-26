@@ -34,6 +34,6 @@ public class Genero {
 
     @Override
     public String toString() {
-        return "id: " + this.idGenero + "    |" + this.nombreGenero + " |";
+        return "id:" + this.idGenero + " " + this.nombreGenero + "    ";
     }
 }
