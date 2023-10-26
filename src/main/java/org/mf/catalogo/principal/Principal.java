@@ -1,4 +1,4 @@
-package org.mf.catalogo.pruebas;
+package org.mf.catalogo.principal;
 import java.sql.SQLException;
 import static org.mf.catalogo.utils.MenuInicial.menu;
 
