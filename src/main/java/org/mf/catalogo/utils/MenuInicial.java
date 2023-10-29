@@ -5,7 +5,6 @@ import org.mf.catalogo.model.Pelicula;
 import org.mf.catalogo.service.CatalogoServicio;
 import org.mf.catalogo.service.Servicio;
 
-import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;

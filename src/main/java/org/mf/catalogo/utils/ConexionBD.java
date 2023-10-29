@@ -10,6 +10,7 @@ public class ConexionBD {
     private static String url = "jdbc:mysql://localhost:3306/java_app?serverTimezone=UTC";
     private static String usuario = "root";
     private static String password = "admin";
+
     private static BasicDataSource getPool() {
         BasicDataSource pool = new BasicDataSource();
         pool.setUrl(url);
