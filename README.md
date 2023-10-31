@@ -4,6 +4,8 @@
    ![Static Badge](https://img.shields.io/badge/java_JDBC-red?style=plastic&logo=maven)
    ![Static Badge](https://img.shields.io/badge/maven-green?style=plastic&logo=maven)
    ![Static Badge](https://img.shields.io/badge/MySQL-blue?style=plastic&logo=maven)
+   ![Static Badge](https://img.shields.io/badge/Liknedin-blue?style=plastic&logo=linkedin&link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmiguel-figueroa-olivar%2F)
+
 <br>
 <br><br>
 ![catalogo de peliculas](https://github.com/MiguelFOlivar/create-java-app/assets/91326484/aea4e24c-fd74-4082-9011-eb01755f6167)
@@ -45,4 +47,5 @@ Instrucciones:
 <p>**Es recomendable usar JDK 17 o supeior.</p>
 
 
-
+<p>Desarrollado por: Miguel Figueroa Olivar</p>
+<p> https://www.linkedin.com/in/miguel-figueroa-olivar/ </p>
