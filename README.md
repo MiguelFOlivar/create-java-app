@@ -8,6 +8,7 @@
 
 <br>
 <br><br>
+
 ![catalogo de peliculas](https://github.com/MiguelFOlivar/create-java-app/assets/91326484/aea4e24c-fd74-4082-9011-eb01755f6167)
 
 <h2> Proyecto Integrador Fase 01 de Java  </h2>
